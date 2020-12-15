@@ -1,0 +1,23 @@
+{
+  "name": "typescript-reptile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node ./src/crowller.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jp93/typescript-reptile.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jp93/typescript-reptile/issues"
+  },
+  "homepage": "https://github.com/jp93/typescript-reptile#readme",
+  "devDependencies": {
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
+}
