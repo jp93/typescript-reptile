@@ -1,5 +1,6 @@
 import fs from 'fs'
 import cheerio from 'cheerio'
+import { Analyzer } from './crowller'
 interface Course {
   title: string,
   count: number
@@ -11,7 +12,14 @@ interface CourseResult {
 interface Content {
   [propName: number] : Course[]
 }
-export default  class DellAnalyzer {
+export default  class DellAnalyzer implements Analyzer {
+  private static instance: DellAnalyzer
+  static getInstance() {
+    if(!DellAnalyzer.instance) {
+      DellAnalyzer.instance = new DellAnalyzer()
+    }
+    return DellAnalyzer.instance
+  }
   private getCourseInfo(html: string) {
     const $ = cheerio.load(html)
     const courseItem = $('.course-item')
@@ -43,6 +51,9 @@ export default  class DellAnalyzer {
     const courseInfo = this.getCourseInfo(html)
     const fileContent = this.generateJsonContent(courseInfo, filePath)
     return fileContent
+  }
+  private constructor() {
+
   }
 
 }
