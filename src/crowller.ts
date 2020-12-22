@@ -2,6 +2,9 @@ import superagent from 'superagent'
 import DellAnalyzer from './dellAnalyzer'
 import path from 'path'
 import fs from 'fs'
+interface Analyzer{
+  analyzer:(html: string, filePath: string) => string
+}
 
 class Crowller {
   private secret = 'x3b174jsx'
@@ -21,7 +24,7 @@ class Crowller {
     fs.writeFileSync(this.filePath, content)
   }
 
-  constructor(private analyzer:any) {
+  constructor(private analyzer: Analyzer) {
     this.initSpiderProcess()
   }
 }
